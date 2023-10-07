@@ -1,3 +1,3 @@
 # private-node
 
-Personal private single box JSON editor.
+Personal private secure single-box JSON editor.

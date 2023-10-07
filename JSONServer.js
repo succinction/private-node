@@ -2,20 +2,23 @@
 const http = require('http');
 const JSONEdits = require('./JSONEdit');
 
-const server = http.createServer( async (req, res) => {
+const server = http.createServer(async (req, res) => {
     if (req.url === '/') {
-        res.write(JSON.stringify([1, 2, "JSON Object"]));
+        res.write("You have connected to the API");
         res.end();
-    }
-
-    if (req.url === '/read') {
+    } else if (req.url === '/read') {
         const projectObj = await JSONEdits.readProject();
-        console.log("projectObj:", projectObj);
-        res.write(JSON.stringify(projectObj))
+        res.write(projectObj);
+        res.end();
+    } else if (req.url === '/write' ) {
+        res.write("WRITING FPO");
+        res.end();
+    } else {
+        res.write("WRONG TURN");
         res.end();
     }
-
 })
 
+JSONEdits.initialize()
 server.listen(3003)
 console.log("listening on port 3003")

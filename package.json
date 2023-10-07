@@ -1,13 +1,14 @@
 {
   "name": "JSONEdit",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node 14.16.1",
   "main": "JSONEdit.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon JSONEdit.js"
+    "start": "node JSONEdit.js"
   },
   "keywords": [],
   "author": "JBH",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {}
 }

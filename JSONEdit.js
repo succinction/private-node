@@ -1,13 +1,14 @@
 const fs = require('fs')
-const { readFile } = require('fs/promises');
+const { readFile, mkdir } = require('fs/promises');
 
-const filePath = 'data.json';
+const filePath = '.files/data.json';
 
 function initialize() {
     if (!fs.existsSync(filePath)) {
+        mkdir(".files")
         console.log("init:");
         const initialJSON = {
-            owner: "Aaron",
+            owner: "Undefined",
             project: "init",
             description: "testing",
             steps: [
@@ -23,14 +24,13 @@ function initialize() {
             if (err) {
                 console.error('Error writing JSON', err);
             } else {
-                console.log("SUCCESS saved init")
+                console.log("initial init")
             }
         })
     } else {
-        console.log("file already initialized");
+        console.log("initialized");
     }
 }
-initialize()
 
 function saveProject(projectObject) {
     const jsonString = JSON.stringify(projectObject);
@@ -42,13 +42,15 @@ function saveProject(projectObject) {
         }
     })
 }
+
 function readProject(projectName) {
     return readFile(filePath, 'utf8')
 }
 
 module.exports = {
     saveProject,
-    readProject
+    readProject,
+    initialize,
 }
 
 
